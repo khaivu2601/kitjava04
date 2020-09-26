@@ -40,6 +40,7 @@ public class Bai1 {
         int socot=3;
         int [][]a= new int[sodong][socot];
         nhapmang(a,sodong,socot);
+        xuatmang(a,sodong,socot);
         tongptu(a,sodong,socot);
     }
 }
