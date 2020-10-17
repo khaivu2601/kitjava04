@@ -18,7 +18,9 @@ public class Main {
                 case 4: QLTV.xuatShipper();break;
                 case 5: QLTV.nhapGrab(); break;
                 case 6: QLTV.xuatGrab();break;
-                case 7: QLTV.tongTien();break;
+                case 7: QLTV.xuatTb();break;
+                case 8: QLTV.tongTien();break;
+                case 9: QLTV.thongKeLuongGiamDan();break;
                 case 0: return;
                 default:
                     System.out.println("Bạn chọn sai rồi");

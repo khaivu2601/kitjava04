@@ -8,9 +8,9 @@ import java.util.Scanner;
 import java.util.ServiceConfigurationError;
 
 public class Quanly {
-    ArrayList<ongNuoc> ongNuoclist;
-    ArrayList<Shipper> Shipperlist;
-    ArrayList<Grab> Grablist;
+   private ArrayList<chung> danhSachNV=new ArrayList<>();
+
+
     public void Menu(){
         System.out.println("\t \t \t Quản lý hệ thống ");
         System.out.println("1.Nhập thợ sửa ống nước");
@@ -20,13 +20,16 @@ public class Quanly {
         System.out.println("5.nhập grab");
         System.out.println("6.Xuất grab");
         System.out.println("7.tính tiền ");
+        System.out.println("8.xuất toàn bộ nv");
         System.out.println("0.exit");
         System.out.println("Mời bạn chọn ");
     }
+    public void xuatTb(){
+        for (chung tmp : danhSachNV){
+            tmp.xuat();
+        }
+    }
     public Quanly(){
-        ongNuoclist = new ArrayList<>();
-        Shipperlist =new ArrayList<>();
-        Grablist =new ArrayList<>();
     }
     public void nhapongNuoc(){
         Scanner sc=new Scanner(System.in);
@@ -36,15 +39,15 @@ public class Quanly {
             System.out.println("NHAP thợ thứ " + (i + 1));
             ongNuoc tmp = new ongNuoc();
             tmp.nhap();
-            ongNuoclist.add(tmp);
+            danhSachNV.add(tmp);
 
         }
     }
     public void xuatongNuoc(){
         System.out.println("\t\t\t danh sách thợ là : ");
-        for (int i = 0; i < ongNuoclist.size(); i++) {
+        for (int i = 0; i < danhSachNV.size(); i++) {
             System.out.print((i+1)+ ". ");
-            ongNuoclist.get(i).xuat();
+            danhSachNV.get(i).xuat();
 
         }
     }
@@ -56,14 +59,14 @@ public class Quanly {
             System.out.println("nhập shipper thứ "+ (i+1));
             Shipper tmp =new Shipper();
             tmp.nhap();
-            Shipperlist.add(tmp);
+            danhSachNV.add(tmp);
         }
     }
     public void xuatShipper(){
         System.out.println("\t\t\t danh sách shipper là : ");
-        for (int i = 0; i < Shipperlist.size(); i++) {
+        for (int i = 0; i < danhSachNV.size(); i++) {
             System.out.print((i+1)+ ". ");
-            Shipperlist.get(i).xuat();
+            danhSachNV.get(i).xuat();
 
         }
     }
@@ -75,34 +78,76 @@ public class Quanly {
             System.out.println("nhập grab thứ "+ (i+1));
             Grab tmp =new Grab();
             tmp.nhap();
-            Grablist.add(tmp);
+            danhSachNV.add(tmp);
         }
     }
     public void xuatGrab(){
         System.out.println("\t\t\t danh sách grab là : ");
-        for (int i = 0; i < Grablist.size(); i++) {
+        for (int i = 0; i < danhSachNV.size(); i++) {
             System.out.print((i+1)+ ". ");
-            Grablist.get(i).xuat();
+            danhSachNV.get(i).xuat();
 
         }
     }
     public void tongTien(){
-        int Tongtien=0;
-        for(ongNuoc tmp : ongNuoclist)
-        {
-            Tongtien+=tmp.tinhTien();
-            System.out.println("ống nước "+Tongtien);
-        }
-        for(Shipper tmp : Shipperlist)
-        {
-            Tongtien+=tmp.tinhTien();
-            System.out.println("shipper "+Tongtien);
-        }
-        for(Grab tmp : Grablist)
-        {
-            Tongtien+=tmp.tinhTien();
-            System.out.println("grab"+Tongtien);
-        }
-        System.out.println("tổng tiền "+ Tongtien);
     }
+    public void thongKeLuongGiamDan() {
+        System.out.println("\t\tNhanVienOngNUOc");
+        SapXepLuongNVOngNuocGiamDan();
+        for( chung tmp : danhSachNV)
+        {
+            tmp.xuat();
+        }
+        System.out.println("\t\tNhanVienXeOm");
+        SapXepLuongNVXeOmGiamDan();
+        for(chung tmp : danhSachNV)
+        {
+            tmp.xuat();
+        }
+        System.out.println("\t\tNhanVienShipper");
+        SapXepLuongShipperGiamDan();
+        for(chung tmp : danhSachNV)
+        {
+            tmp.xuat();
+        }
+    }
+
+    private void SapXepLuongShipperGiamDan() {
+        for (int i = 0; i < danhSachNV.size()-1; i++) {
+            for (int j=i+1;j<danhSachNV.size();j++){
+                if(danhSachNV.get(i).tinhTien()<danhSachNV.get(j).tinhTien()) {
+                    Shipper tmp;
+                    tmp = (Shipper) danhSachNV.get(i);
+                    danhSachNV.set(i, danhSachNV.get(j));
+                    danhSachNV.set(j, tmp);
+                }
+            }
+        }
+    }
+
+    private void SapXepLuongNVXeOmGiamDan() {
+        for (int i = 0; i < danhSachNV.size() - 1; i++) {
+            for (int j = i + 1; j < danhSachNV.size(); j++) {
+                if (danhSachNV.get(i).tinhTien() < danhSachNV.get(j).tinhTien()) {
+                    Grab tmp;
+                    tmp = (Grab) danhSachNV.get(i);
+                    danhSachNV.set(i, danhSachNV.get(j));
+                    danhSachNV.set(j, tmp);
+                }
+            }
+        }
+    }
+        private void SapXepLuongNVOngNuocGiamDan(){
+            for (int i = 0; i < danhSachNV.size() - 1; i++) {
+                for (int j = i + 1; j < danhSachNV.size(); j++) {
+                    if ( danhSachNV.get(i).tinhTien() < danhSachNV.get(j).tinhTien() ) {
+                        ongNuoc tmp;
+                        tmp = (ongNuoc) danhSachNV.get(i);
+                        danhSachNV.set(i,danhSachNV.get(j));
+                        danhSachNV.set(j,tmp);
+                    }
+                }
+            }
+        }
+
 }

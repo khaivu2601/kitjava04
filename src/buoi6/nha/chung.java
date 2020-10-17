@@ -90,4 +90,8 @@ public class chung {
     public void setCanNang(int canNang) {
         this.canNang = canNang;
     }
+
+    public void tinhTien() {
+
+    }
 }
