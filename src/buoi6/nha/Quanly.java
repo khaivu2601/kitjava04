@@ -128,7 +128,7 @@ public class Quanly {
     private void SapXepLuongNVXeOmGiamDan() {
         for (int i = 0; i < danhSachNV.size() - 1; i++) {
             for (int j = i + 1; j < danhSachNV.size(); j++) {
-                if (danhSachNV.get(i).tinhTien() < danhSachNV.get(j).tinhTien()) {
+                if (danhSachNV.get(i).tinhTien() >= danhSachNV.get(j).tinhTien()) {
                     Grab tmp;
                     tmp = (Grab) danhSachNV.get(i);
                     danhSachNV.set(i, danhSachNV.get(j));
@@ -136,15 +136,15 @@ public class Quanly {
                 }
             }
         }
-    }
+
         private void SapXepLuongNVOngNuocGiamDan(){
             for (int i = 0; i < danhSachNV.size() - 1; i++) {
                 for (int j = i + 1; j < danhSachNV.size(); j++) {
-                    if ( danhSachNV.get(i).tinhTien() < danhSachNV.get(j).tinhTien() ) {
+                    if (danhSachNV.get(i).tinhTien() < danhSachNV.get(j).tinhTien()) {
                         ongNuoc tmp;
                         tmp = (ongNuoc) danhSachNV.get(i);
-                        danhSachNV.set(i,danhSachNV.get(j));
-                        danhSachNV.set(j,tmp);
+                        danhSachNV.set(i, danhSachNV.get(j));
+                        danhSachNV.set(j, tmp);
                     }
                 }
             }
