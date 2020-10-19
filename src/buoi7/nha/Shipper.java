@@ -2,7 +2,7 @@ package buoi7.nha;
 
 import java.util.Scanner;
 
-public class Shipper extends Nguoi{
+public class Shipper extends buoi7 {
     private int soDonhang;
     public int tinhTien(){
         return soDonhang*30000;
