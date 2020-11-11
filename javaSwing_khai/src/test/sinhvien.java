@@ -220,16 +220,16 @@ public class sinhvien extends javax.swing.JFrame {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         String Masv= txtMasv.getText();
         String Hoten = txtHoten.getText();
-        String gtinh = combo.getSelectedItem().toString();
         String ngsinh = txtNgaysinh.getText();
         String diem = txtDiem.getText();
         String dvi =txtDvi.getText();
         String luong =txtLuong.getText();
         String hocphi = txthocphi.getText();
+        String combo= String.valueOf(this.combo.getSelectedItem());
        
         System.out.println("maSv   "+Masv); 
         System.out.println("họ tên   "+Hoten);
-        System.out.println("giới tính   "+gtinh);
+        System.out.println("giới tính   "+combo);
         System.out.println("ngày sinh     "+ngsinh);
         System.out.println("điểm          "+diem);
          if(btnHTTT.isSelected()){

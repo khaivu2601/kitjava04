@@ -171,7 +171,7 @@ public class book extends javax.swing.JFrame {
         String ID = txtID.getText();
         String author=txtAuther.getText();
         String title=txtTitle.getText();
-        String cate=comboTelogy.getSelectedItem().toString();
+        String cate= String.valueOf(comboTelogy.getSelectedItem());
         
         System.out.println("~~~~~~~~~BOOK~~~~~~~~~");
         System.out.println("ID   :"+ID);
