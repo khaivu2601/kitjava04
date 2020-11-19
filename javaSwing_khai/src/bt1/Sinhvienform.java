@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package bt1;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import test.*;
 
 /**
  *
- * @author LENOVO
+ * @author khaivuxuan
  */
-public class sinhvien extends javax.swing.JFrame {
-
+public class Sinhvienform extends javax.swing.JFrame implements Serializable{
+    ArrayList<SinhvienHTTT> dsSinhvienHTTTs = new ArrayList<>();
+    ArrayList<Sinhvienmm> dsSinhvienmms = new ArrayList<>();
     /**
-     * Creates new form sinhvien
+     * Creates new form Sinhvienform
      */
-    public sinhvien() {
+    public Sinhvienform() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -218,33 +224,39 @@ public class sinhvien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        String Masv= txtMasv.getText();
-        String Hoten = txtHoten.getText();
-        String ngsinh = txtNgaysinh.getText();
-        String diem = txtDiem.getText();
-        String dvi =txtDvi.getText();
-        String luong =txtLuong.getText();
-        String hocphi = txthocphi.getText();
-        String combo= String.valueOf(this.combo.getSelectedItem());
-       
-        System.out.println("maSv   "+Masv); 
-        System.out.println("họ tên   "+Hoten);
-        System.out.println("giới tính   "+combo);
-        System.out.println("ngày sinh     "+ngsinh);
-        System.out.println("điểm          "+diem);
-         if(btnHTTT.isSelected()){
-            System.out.println("hệ HTTT");
-        }else{
-            System.out.println("hệ MM");
-        }
-        System.out.println("dvi      "+dvi);
-        System.out.println("lương      "+luong);
-        System.out.println("học phí    "+hocphi);
+        for(SinhvienHTTT tmp : dsSinhvienHTTTs)
+         {
+             tmp.xuat();
+         }
+         for(Sinhvienmm tmp : dsSinhvienmms)
+         {
+             tmp.xuat();
+         }
                 
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        
+        double diemtb= Double.valueOf(txtDiem.getText());
+        String hoten=txtHoten.getText();
+         String gtinh= combo.getSelectedItem().toString();
+         String ngsinh = txtNgaysinh.getText();
+         String Masv= txtMasv.getText();
+         SinhvienHTTT svHTTT;
+         Sinhvienmm sinhvienmm;
+         if(btnHTTT.isSelected()){
+             double hocphi=Double.valueOf(txthocphi.getText());
+             svHTTT = new SinhvienHTTT(hocphi,Masv,hoten,ngsinh,gtinh,diemtb);
+             dsSinhvienHTTTs.add(svHTTT);
+             svHTTT.xuat();
+             System.out.println(dsSinhvienHTTTs);
+         }
+         else if(btnMM.isSelected()){
+             String donvi=txtDvi.getText();
+             int luong=Integer.valueOf(txtLuong.getText());
+             sinhvienmm = new Sinhvienmm(donvi,luong,Masv,hoten,ngsinh,gtinh,diemtb);
+             dsSinhvienmms.add(sinhvienmm);
+             System.out.println(dsSinhvienmms);
+         }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
@@ -268,20 +280,21 @@ public class sinhvien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(sinhvien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sinhvienform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(sinhvien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sinhvienform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(sinhvien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sinhvienform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(sinhvien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sinhvienform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sinhvien().setVisible(true);
+                new Sinhvienform().setVisible(true);
             }
         });
     }
