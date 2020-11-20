@@ -78,4 +78,7 @@ public class Person implements Serializable{
     void setLuongcb(int parseInt){
         
     }
+    void setLuong(int parseInt){
+        
+    }
 }

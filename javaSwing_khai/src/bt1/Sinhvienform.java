@@ -5,8 +5,11 @@
  */
 package bt1;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import test.*;
 
 /**
@@ -232,6 +235,9 @@ public class Sinhvienform extends javax.swing.JFrame implements Serializable{
          {
              tmp.xuat();
          }
+         
+         
+         
                 
     }//GEN-LAST:event_btnLuuActionPerformed
 

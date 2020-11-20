@@ -15,12 +15,15 @@ public class Student extends Person implements Serializable{
     private String maSV;
     private String Email;
     private float diem;
-    public Student(String maSV,String Email,float diem){
+    public Student(){
         
     }
 
     Student(String maSv, String email, String ngsinh, String hoten, String gt, String diachi) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super(hoten,ngsinh,gt,diachi);
+        this.Email=Email;
+        this.diem=diem;
+        this.maSV=maSv;
     }
 
     public String getMaSV() {

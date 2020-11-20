@@ -5,8 +5,20 @@
  */
 package b2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import jdk.jfr.events.FileWriteEvent;
 
 /**
  *
@@ -48,6 +60,7 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
         combogt = new javax.swing.JComboBox<>();
         btnthem = new javax.swing.JButton();
         btnluu = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +110,13 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
             }
         });
 
+        jButton1.setText("file");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,11 +126,6 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
-                        .addComponent(btnthem)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnluu))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -121,6 +136,12 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
                             .addComponent(jLabel6))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnthem)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnluu))
                             .addComponent(txthoTen)
                             .addComponent(txtmaSV)
                             .addComponent(txtngsinh)
@@ -162,7 +183,8 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnthem)
-                    .addComponent(btnluu))
+                    .addComponent(btnluu)
+                    .addComponent(jButton1))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
@@ -173,6 +195,7 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
        for(Student tmp : students){
            tmp.xuat();
        }
+       
     }//GEN-LAST:event_btnluuActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
@@ -190,6 +213,29 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
         
         
     }//GEN-LAST:event_btnthemActionPerformed
+    public void nhantt(){
+                Student st =new Student();
+         
+                st.setHoTen(txthoTen.getText());
+                st.setNgaySinh(txtngsinh.getText());
+                st.setDiachi(txtdaichi.getText());
+                st.setGioiTinh(combogt.getSelectedItem().toString());
+                st.setEmail(txtemail.getText());
+                st.setMaSV(txtmaSV.getText());
+              
+       
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        File f=new File("sinhvien.dat");
+        try {
+            FileWriter fw= new FileWriter(f);
+            PrintWriter pw=new PrintWriter(fw);
+            pw.print(students);
+            pw.close();
+            fw.close();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,6 +276,7 @@ public class PersonStu extends javax.swing.JFrame implements Serializable{
     private javax.swing.JButton btnluu;
     private javax.swing.JButton btnthem;
     private javax.swing.JComboBox<String> combogt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
