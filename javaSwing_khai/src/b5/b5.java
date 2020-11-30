@@ -94,6 +94,12 @@ public class b5 extends javax.swing.JFrame implements Serializable{
 
         combogt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
 
+        txthoten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthotenActionPerformed(evt);
+            }
+        });
+
         combokhoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ĐTVT", "CNTT", "HTTT", "CNM", "CNPM" }));
 
         btnluu.setText("Lưu");
@@ -249,6 +255,10 @@ public class b5 extends javax.swing.JFrame implements Serializable{
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txthotenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthotenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthotenActionPerformed
 
     /**
      * @param args the command line arguments

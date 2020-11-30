@@ -217,6 +217,9 @@
         <Component class="javax.swing.JTextField" name="txtma">
         </Component>
         <Component class="javax.swing.JTextField" name="txthoten">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txthotenActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="combokhoa">
           <Properties>

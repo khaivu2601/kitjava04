@@ -5,7 +5,7 @@
  */
 package b7;
 
-import b3.*;
+
 import b2.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  * @author LENOVO
  */
 public class NHanVienf extends javax.swing.JFrame implements Serializable{
-    ArrayList<Nvien> nhanvien =new ArrayList<Nvien>();
+    ArrayList<NhanVien> nhanvien =new ArrayList<NhanVien>();
 
     /**
      * Creates new form PersonStu

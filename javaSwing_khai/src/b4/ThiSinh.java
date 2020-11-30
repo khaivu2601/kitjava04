@@ -5,25 +5,55 @@
  */
 package b4;
 
-import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
- * @author LENOVO
+ * @author ASUS TUF
  */
-public class ThiSinh implements Serializable{
+public class ThiSinh {
+    private String hoten;
+    private String ngaysinh;
     private String diachi;
-    private String hoTen;
-    private String ngaySinh;
-    
-    public ThiSinh(){
+    public void nhap(){
+        Scanner sc=new Scanner(System.in);
         
+        System.out.println("nhập họ tên");
+        hoten=sc.nextLine();
+        System.out.println("nhập ngày sinh");
+        ngaysinh=sc.nextLine();
+        System.out.println("nhập địa chỉ");
+        diachi=sc.nextLine();
     }
-    public ThiSinh(String HoTen, String NgaySinh, String DiaChi) {
-        this.hoTen = HoTen;
-        this.ngaySinh = NgaySinh;
-        this.diachi = DiaChi;
+public double tongdiem(){
+    return 0;
+}
+    @Override
+    public String toString() {
+        return  "hoten=" + hoten + ", ngaysinh=" + ngaysinh + ", diachi=" + diachi + '}';
     }
+public void xuat(){
+    System.out.println(toString());
+}
+    public ThiSinh() {
+    }
+
+    public String getHoten() {
+        return hoten;
+    }
+
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
+
+    public String getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
+
     public String getDiachi() {
         return diachi;
     }
@@ -32,25 +62,6 @@ public class ThiSinh implements Serializable{
         this.diachi = diachi;
     }
 
-    public String getHoTen() {
-        return hoTen;
-    }
-
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
-    }
-
-    public String getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(String ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
-    @Override
-    public String toString() {
-        return "ThiSinh{" + "diachi=" + diachi + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + '}';
-    }
+    
     
 }

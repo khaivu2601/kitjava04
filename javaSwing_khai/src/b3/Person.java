@@ -5,34 +5,21 @@
  */
 package b3;
 
-import java.io.Serializable;
-
 /**
  *
- * @author khaivuxuan
+ * @author LENOVO
  */
-public class Person implements Serializable{
-     private String diachi;
+public class Person {
     private String hoTen;
     private String ngaySinh;
-    private String gioiTinh; 
-    
-    public Person(String hoTen,String ngaysinh,String daichi,String gioitinh ){
-        this.diachi=diachi;
-        this.gioiTinh=gioitinh;
-        this.hoTen=hoTen;
-        this.ngaySinh=ngaysinh;
-    }
-    public Person(){
-        
-    }
+    private String diaChi;
+    private String gioiTinh;
 
-    public String getDiachi() {
-        return diachi;
-    }
-
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+    public Person(String hoTen, String ngaySinh, String diaChi, String gioiTinh) {
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
     }
 
     public String getHoTen() {
@@ -51,6 +38,14 @@ public class Person implements Serializable{
         this.ngaySinh = ngaySinh;
     }
 
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
     public String getGioiTinh() {
         return gioiTinh;
     }
@@ -58,27 +53,9 @@ public class Person implements Serializable{
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-    public void nhap(){
-        
-    }
 
     @Override
     public String toString() {
-        return "Person{" + "diachi=" + diachi + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + '}';
-    }
-    void setBan(String text){
-        
-    }
-    void setHeso(int parseInt){
-        
-    }
-    void setThamnien(int parseInt){
-        
-    }
-    void setLuongcb(int parseInt){
-        
-    }
-    void setLuong(int parseInt){
-        
+        return "{" + "hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", gioiTinh=" + gioiTinh + '}';
     }
 }
