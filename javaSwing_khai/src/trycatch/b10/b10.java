@@ -202,8 +202,20 @@ public class b10 extends javax.swing.JFrame implements Serializable{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+     boolean hople() {
+        if (txtID.getText().isEmpty() || txtTitle.getText().isEmpty() || txtAuth.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(this, "ko đc để trống");
+          return false;
+        }
+        if (!txtID.getText().matches("\\d+") || txtAuth.getText().matches("\\d+") || txtTitle.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Dinh dang sai. Examble ID: 123, Title: xxx, Authors: jav a");
+            return false;
+        }
+        return true;
 
+    }
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+        if(hople()){
         String ID=txtID.getText();
         String Authors=txtAuth.getText();
         String Title=txtTitle.getText();
@@ -222,7 +234,7 @@ public class b10 extends javax.swing.JFrame implements Serializable{
         StringBuilder sb =new StringBuilder();
         sb.append("lưu thành công ");
         JOptionPane.showMessageDialog(this,sb.toString(),"thông báo!",JOptionPane.OK_CANCEL_OPTION);
-               
+        }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed

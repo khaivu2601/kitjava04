@@ -5,13 +5,14 @@
  */
 package trycatch.b9;
 
-import java.io.Serializable;
+
 
 /**
  *
  * @author Admin
  */
-public class Number implements Serializable{
+public class Number  {
+
     private double max;
     private double min;
     private double value;
@@ -23,21 +24,6 @@ public class Number implements Serializable{
         this.max = max;
         this.min = min;
         this.value = value;
-    }
-    
-    public boolean la_SNT(double value)
-    {
-        if(value < 2)
-            return false;
-        if(value ==2)
-            return true;
-        for(int i= 2 ; i<=Math.sqrt(value); i++)
-        {
-            if (value % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public double getMax() {
@@ -64,10 +50,30 @@ public class Number implements Serializable{
         this.value = value;
     }
 
+    public boolean soNguyento(double value) {
+        int d = 0;
+        for (int i = 2; i <= value; i++) {
+            if (value % i == 0) {
+                d++;
+            }
+        }
+        if (d == 2) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Number s = new Number();
+        System.out.println(s.soNguyento(3));
+    }
+
     @Override
     public String toString() {
         return "Number{" + "max=" + max + ", min=" + min + ", value=" + value + '}';
     }
-    
-    
+
 }

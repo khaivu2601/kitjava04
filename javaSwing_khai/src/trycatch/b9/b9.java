@@ -5,21 +5,26 @@
  */
 package trycatch.b9;
 
+import java.awt.HeadlessException;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.io.FilterWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
+
 /**
  *
  * @author LENOVO
  */
 public class b9 extends javax.swing.JFrame {
+
     ArrayList<Number> numberarr = new ArrayList<>();
-    String messString="";
+    String messString = "";
+
     /**
      * Creates new form b9
      */
@@ -129,7 +134,7 @@ public class b9 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    boolean hople(){
+    boolean hople() {
         if (txtMax.getText().isEmpty() || txtMin.getText().isEmpty() || txtValue.getText().isEmpty()) {
             messString += "Khong duoc de trong";
             return false;
@@ -138,34 +143,43 @@ public class b9 extends javax.swing.JFrame {
             messString += "Dinh dang phai la double";
             return false;
         }
-        return true;   
+        return true;
     }
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        File f = new File("snt.dat");
+        File file = new File("C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\javaSwing_khai\\snt.dat");
+        int snt=0;
         try {
-            FileWrite fw = new FileWrite(f);
+            FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            for(Number tmp :numberarr){
-                if(tmp.la_SNT(tmp.getValue())){
-                bw.write(tmp.toString());
-                bw.newLine();
-            }else{
-                    JOptionPane.showMessageDialog(this, txtValue.getText() + "ko là snt !");
-                    }
+            for (Number tmp : numberarr) {
+                if (tmp.soNguyento(tmp.getValue())== true) {
+                    snt=2;
+                } else {
+                snt=0;
+                }
             }
-            JOptionPane.showMessageDialog(this, "lưu thành công ");
+            if(snt==2){
+                for (Number tmp : numberarr) {
+                     bw.write(tmp.toString());
+                     bw.newLine();
+                }
+                
+               
+            }
+                JOptionPane.showMessageDialog(rootPane, "Luu thanh cong");
             bw.close();
-        } catch (Exception e) {
+        } catch (HeadlessException | IOException ex) {
+            Logger.getLogger(b9.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnKhoitaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoitaoActionPerformed
-           if (hople()) {
+        if (hople()) {
             double value = Double.valueOf(txtValue.getText());
             double min = Double.valueOf(txtMin.getText());
             double max = Double.valueOf(txtMax.getText());
             try {
-                
+
                 Number nb = new Number(value, min, max);
                 numberarr.add(nb);
                 JOptionPane.showMessageDialog(rootPane, "Khoi tao thanh cong");
